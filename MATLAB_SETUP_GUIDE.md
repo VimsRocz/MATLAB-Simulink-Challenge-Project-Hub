@@ -136,7 +136,7 @@ try
     % Test basic functionality
     accel_data = [0 0 9.81]; % Gravity vector
     gyro_data = [0 0 0];     % No rotation
-    orientation = [1 0 0 0]; % No rotation quaternion
+    orientation = eye(3);    % Identity rotation matrix (no rotation)
     
     [accel_out, gyro_out] = imu(accel_data, gyro_data, orientation);
     

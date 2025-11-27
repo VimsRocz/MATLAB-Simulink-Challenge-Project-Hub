@@ -52,7 +52,8 @@ fprintf('Generating stationary trajectory...\n');
 position_stationary = zeros(numSamples, 3);
 velocity_stationary = zeros(numSamples, 3);
 acceleration_stationary = repmat([0 0 9.81], numSamples, 1); % Just gravity
-orientation_stationary = repmat([1 0 0 0], numSamples, 1); % No rotation
+% Create identity rotation matrix for each sample (no rotation)
+orientation_stationary = repmat(eye(3), [1, 1, numSamples]);
 angVel_stationary = zeros(numSamples, 3);
 angAccel_stationary = zeros(numSamples, 3);
 
@@ -83,8 +84,8 @@ for i = 1:numSamples
     acceleration_moving(i, 3) = 9.81; % gravity
 end
 
-% Simple orientation (no rotation for moving case)
-orientation_moving = repmat([1 0 0 0], numSamples, 1);
+% Create identity rotation matrix for each sample (no rotation for moving case)
+orientation_moving = repmat(eye(3), [1, 1, numSamples]);
 angVel_moving = zeros(numSamples, 3);
 angAccel_moving = zeros(numSamples, 3);
 
